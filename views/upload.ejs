@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Account</title>
+</head>
+<body>
+  <h1>Upload New Account</h1>
+  <form method="POST" action="/upload" enctype="multipart/form-data">
+    <input type="file" name="photo" accept="image/*" required><br><br>
+    <textarea name="text" placeholder="Description..." required></textarea><br><br>
+    <button type="submit">UPLOAD</button>
+  </form>
+  <br>
+  <a href="/">Back to Home</a> | <a href="/logout">Logout</a>
+</body>
+</html>
