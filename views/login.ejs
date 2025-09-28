@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Login - ASH ACC STORE</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+<body class="centered">
+  <div class="login-box">
+    <h2>Admin Login</h2>
+    <% if (error) { %>
+      <div class="alert"><%= error %></div>
+    <% } %>
+    <form method="post" action="/login">
+      <label>Username</label>
+      <input name="username" required />
+      <label>Password</label>
+      <input name="password" type="password" required />
+      <button type="submit">Login</button>
+    </form>
+    <p>Only admins can login.</p>
+    <p><a href="/">Back to Home</a></p>
+  </div>
+</body>
+</html>

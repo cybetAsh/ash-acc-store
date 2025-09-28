@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Upload Account - ASH ACC STORE</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="centered">
+  <div class="upload-box">
+    <h2>Upload Account (Admin)</h2>
+    <% if (error) { %><div class="alert"><%= error %></div><% } %>
+    <% if (success) { %><div class="success"><%= success %></div><% } %>
+
+    <form method="post" action="/upload" enctype="multipart/form-data">
+      <label>Title</label>
+      <input name="title" required />
+      <label>Price (Rs.)</label>
+      <input name="price" />
+      <label>Description</label>
+      <textarea name="description"></textarea>
+      <label>Image</label>
+      <input type="file" name="image" accept="image/*" />
+      <button type="submit">UPLOAD</button>
+    </form>
+
+    <p><a href="/">Back to home</a> | <a href="/logout">Logout</a></p>
+  </div>
+</body>
+</html>

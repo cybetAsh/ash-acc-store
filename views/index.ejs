@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>ASH ACC STORE</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+<body>
+  <header class="hero">
+    <div class="logo">ASH ACC STORE</div>
+    <div class="banner">
+      <img src="/images/banner-placeholder.jpg" alt="banner" />
+      <div class="welcome-bubble">Welcome!</div>
+    </div>
+  </header>
+
+  <nav class="top-controls">
+    <button onclick="location.href='/login'">Sell Your Account</button>
+    <% if (adminLoggedIn) { %>
+      <button onclick="location.href='/upload'">Admin Upload</button>
+      <button onclick="location.href='/logout'">Logout</button>
+    <% } %>
+    <button onclick="openWhatsApp()">Contact Owner</button>
+    <button onclick="joinGroups()">Join Our Groups</button>
+  </nav>
+
+  <section class="highlights">
+    <div class="card small"><strong><%= stats.accountsSold %>+</strong><br/>Accounts Sold</div>
+    <div class="card small"><strong>Delivery speed</strong><br/><%= stats.deliverySpeedText %></div>
+    <div class="card small"><strong>24/7</strong><br/>Support Available</div>
+  </section>
+
+  <main class="products">
+    <% if (items.length === 0) { %>
+      <p>No accounts yet. Admin can upload from Sell Your Account &gt; Login.</p>
+    <% } %>
+    <div class="grid">
+      <% items.forEach(function(it){ %>
+        <article class="item">
+          <img src="<%= it.image %>" alt="<%= it.title %>" />
+          <h3><%= it.title %></h3>
+          <p class="price">Rs. <%= it.price %></p>
+          <p class="desc"><%= it.description %></p>
+        </article>
+      <% }) %>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div>Contact Owner</div>
+    <div class="group-buttons">
+      <a href="<%= groupUrls.g1 %>" target="_blank">Group 1</a>
+      <a href="<%= groupUrls.g2 %>" target="_blank">Group 2</a>
+      <a href="<%= groupUrls.g3 %>" target="_blank">Group 3</a>
+    </div>
+  </footer>
+
+<script>
+  function openWhatsApp(){
+    const num = "<%= contactNumber %>";
+    if (!num) return alert('Contact number not configured.');
+    const msg = encodeURIComponent('Hello, I saw your ASH ACC STORE listing and want to contact you.');
+    const link = 'https://wa.me/' + num.replace(/\D/g,'') + '?text=' + msg;
+    window.open(link, '_blank');
+  }
+  function joinGroups(){
+    const g1 = "<%= groupUrls.g1 %>";
+    const g2 = "<%= groupUrls.g2 %>";
+    const g3 = "<%= groupUrls.g3 %>";
+    if (g1 && g1 !== '#') window.open(g1, '_blank');
+    if (g2 && g2 !== '#') window.open(g2, '_blank');
+    if (g3 && g3 !== '#') window.open(g3, '_blank');
+  }
+</script>
+</body>
+</html>
